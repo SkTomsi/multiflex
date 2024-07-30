@@ -1,42 +1,67 @@
-/** @type {import("eslint").Linter.Config} */
-const config = {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": true
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  "plugins": [
-    "@typescript-eslint"
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  root: true,
+  extends: [
+    'next',
+    'eslint:recommended',
+    'prettier',
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+    'plugin:react-hooks/recommended',
   ],
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked"
-  ],
-  "rules": {
-    "@typescript-eslint/array-type": "off",
-    "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
+  plugins: ['prettier', '@typescript-eslint', 'react', 'react-hooks'],
+  rules: {
+    // JavaScript rules
+    'prefer-const': 'warn',
+    'no-var': 'warn',
+    'no-unused-vars': 'warn',
+    'object-shorthand': 'warn',
+    'quote-props': ['warn', 'as-needed'],
+    // TypeScript rules
+    '@typescript-eslint/array-type': [
+      'warn',
       {
-        "prefer": "type-imports",
-        "fixStyle": "inline-type-imports"
-      }
+        default: 'array',
+      },
     ],
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
+    '@typescript-eslint/consistent-type-assertions': [
+      'warn',
       {
-        "argsIgnorePattern": "^_"
-      }
+        assertionStyle: 'as',
+        objectLiteralTypeAssertions: 'never',
+      },
     ],
-    "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/no-misused-promises": [
-      "error",
+    // React rules
+    'react/jsx-fragments': ['warn', 'syntax'], // Shorthand syntax for React fragments
+    'react/jsx-filename-extension': [
+      'warn',
       {
-        "checksVoidReturn": {
-          "attributes": false
-        }
-      }
-    ]
-  }
-}
-module.exports = config;
+        extensions: ['ts', 'tsx'],
+      },
+    ],
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'prettier/prettier': 'warn',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+};

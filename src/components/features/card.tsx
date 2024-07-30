@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { type ReactNode } from "react";
-import { useFeatureStore } from "./store";
-import classNames from "classnames";
-import Image from "next/image";
+import { type ReactNode } from 'react';
+import { useFeatureStore } from './store';
+import classNames from 'classnames';
+import Image from 'next/image';
 
 type CardProps = {
   title: string;
@@ -21,8 +21,8 @@ const FeatureCard = ({
   return (
     <div
       className={classNames(
-        "absolute inset-0 h-full w-full rounded-2xl bg-red-300 transition-opacity duration-500",
-        inViewFeature === title ? "opacity-100" : "opacity-0",
+        'absolute inset-0 h-full w-full rounded-2xl bg-red-300 transition-opacity duration-500',
+        inViewFeature === title ? 'opacity-100' : 'opacity-0',
       )}
     >
       {children}

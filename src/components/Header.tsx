@@ -1,27 +1,19 @@
-import Link from "next/link";
-import { Button } from "./ui/button";
+import Link from 'next/link';
+import { Menu } from 'lucide-react';
 
 export default function Header() {
   return (
-    <nav className="flex h-[10vh] w-full items-center justify-between ">
-      <Link href={"/"}>
-        <h1 className="text-[24px] font-extrabold tracking-tighter">
-          Multiflex
-        </h1>
-      </Link>
-      <div className="flex gap-x-5">
-        <Link href={"/what-we-do"} className="text-base font-semibold">
-          What we do
+    <div className="container py-2">
+      <nav className="flex h-[7vh] w-full items-center justify-between">
+        <Link href={'/'}>
+          <h1 className="text-[20px] font-extrabold tracking-tighter md:text-[24px]">
+            Multiflex
+          </h1>
         </Link>
-        <Link href={"/who-we-are"} className="text-base font-semibold">
-          Who are we
-        </Link>
-      </div>
-      <div>
-        <Button variant={"link"} className="text-base">
-          Contact
-        </Button>
-      </div>
-    </nav>
+        <div>
+          <Menu />
+        </div>
+      </nav>
+    </div>
   );
 }
